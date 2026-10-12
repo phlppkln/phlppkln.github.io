@@ -70,7 +70,7 @@ export const projects: Project[] = [
 		],
 		details: {
 			context:
-				"Prospective students often choose study programs from brochures and open days, then drop out when reality doesn't match expectations. TU Wien was in the process of introducing a more flexible solution. Early Moodle prototypes proved too rigid for a constructivist, exploration-based approach, so we built a custom platform with Vue.js and Strapi.",
+				"Prospective students often choose study programs from brochures and open days, then drop out when reality doesn't match expectations. The TU Wien informatics department was in the process of introducing a more flexible solution. Early Moodle prototypes proved too rigid for a constructivist, exploration-based approach, so we built a custom platform with Vue.js and Strapi.",
 			contribution: [
 				"Built the proof of concept and the production platform: Vue.js frontend, Strapi headless CMS as a REST API connected to a MariaDB database.",
 				"Followed the Design Thinking process (literature review, proof of concept, expert interviews, full prototype, user study, iterations) to guide the development.",
@@ -82,12 +82,15 @@ export const projects: Project[] = [
 			outcome:
 				"Introduced in 2024 as a mandatory part of the Informatics Bachelor admission process at TU Wien, with 1,600+ participants in the first official release. The study showed that effective modules need both: clear explanatory framing and meaningful interactive self-exploration — pure exploration leaves participants without orientation.",
 			researchStack: [
-				"Design Thinking process",
+				"Design Thinking",
+				"Literature review",
 				"Expert interviews",
 				"User study (n=28) with controlled study design (two didactic modes)",
-				"FiT-I questionnaire",
+				"Wireframing and prototyping (Figma, Vue.js)",
+				"Requirement analysis",
+				"Tech Stack comparison"
 			],
-			designStack: ["Figma", "Contextual feedback design", "Progressive hints"],
+			designStack: ["Figma", "Contextual feedback design", "Progressive hints", "Information Visualization"],
 			techStack: ["Vue.js", "Strapi", "JavaScript", "D3.js", "Chart.js"],
 			images: [
 				{
@@ -115,7 +118,7 @@ export const projects: Project[] = [
 		org: "condignum GmbH — Frontend developer",
 		period: "2024 – present",
 		summary:
-			"React frontend for a cybersecurity SaaS platform that helps organizations manage security data. I build customer-facing features, modernize legacy code and libraries, keep design patterns consistent, and integrate AI into our prototyping and development workflow.",
+			"React frontend for a cybersecurity SaaS platform that helps organizations manage security data. I build customer-facing features, modernize legacy code and libraries, keep design patterns consistent. Recently integrating and using AI in our prototyping and development workflow has become a key focus.",
 		tags: [
 			"React",
 			"design patterns",
@@ -129,7 +132,7 @@ export const projects: Project[] = [
 				"The platform has grown rapidly over the years. It consists of many interconnected views, built by a small team. Feature requests reach the development team from the product owners, which leaves the question of how they fit the rest of the platform — visually, structurally, and in terms of how they interact with existing components.",
 			contribution: [
 				"Develop customer-facing features as a React developer in the DevOps team.",
-				"Analyze information visualization libraries against the platform's needs to support the presentation of security data in dashboards.",
+				"Analyze and use information visualization libraries (i.e., D3.js) to support the presentation of security data in dashboards.",
 				"Work on complex, interconnected features: trace how a change propagates through other views, so side effects surface in the design rather than in production.",
 				"Modernize the platform by updating libraries and reworking legacy code, and improve the DevOps workflow.",
 				"Integrate AI into the prototyping and development workflow.",
@@ -150,7 +153,7 @@ export const projects: Project[] = [
 		org: "TU Wien — Master's thesis",
 		period: "2021 – 2023",
 		summary:
-			"A Miro application and user study exploring how the infinite canvas can host collaborative, data-driven interactive articles, with GloVe word embeddings clustering participants' contributions by semantic similarity. This project was my Master's thesis and was awarded the Different Brilliant award at the IConCMT 2023 conference.",
+			"A Miro application and user study exploring how the infinite canvas can host collaborative, data-driven interactive articles resulting in a protoype that uses GloVe word embeddings to cluster participants' contributions by semantic similarity. This project was my Master's thesis and was awarded the Different Brilliant award at the IConCMT 2023 conference.",
 		tags: [
 			"HCI research",
 			"Information visualization",
