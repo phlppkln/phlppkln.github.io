@@ -12,7 +12,7 @@ pnpm preview    # serve the production build
 pnpm typecheck  # vue-tsc --noEmit only
 ```
 
-No test suite or lint script exists. `dist/` is a plain static folder deployable anywhere; this repo specifically deploys to GitHub Pages via `.github/workflows/deploy.yml` (build → `actions/upload-pages-artifact` → `actions/deploy-pages`), so `vite.config.ts` sets `base: "/home/"` to match that path.
+No test suite or lint script exists. `dist/` is a plain static folder deployable anywhere; this repo specifically deploys to GitHub Pages via `.github/workflows/deploy.yml` (build → `actions/upload-pages-artifact` → `actions/deploy-pages`), as a user site at the root (https://phlppkln.github.io/), so `vite.config.ts` sets `base: "/"`.
 
 ## Architecture
 
