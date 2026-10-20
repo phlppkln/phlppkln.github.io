@@ -610,8 +610,8 @@ onBeforeUnmount(() => {
 	transform: translateX(-50%);
 	background: var(--paper);
 	box-shadow:
-		0 1px 0 rgb(34 32 28 / calc(0.05 * var(--compact, 0))),
-		0 10px 24px -12px rgb(34 32 28 / calc(0.22 * var(--compact, 0)));
+		0 1px 0 rgb(var(--shadow-rgb) / calc(0.05 * var(--compact, 0))),
+		0 10px 24px -12px rgb(var(--shadow-rgb) / calc(0.22 * var(--compact, 0)));
 }
 
 .mark {

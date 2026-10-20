@@ -25,6 +25,10 @@
 	--accent-hover: #2d443e;
 	/* Warm clay, reserved for the hero mark and nothing else */
 	--clay: #b0754f;
+	/* Shadow tint, as bare RGB channels so callers set their own alpha */
+	--shadow-rgb: 34 32 28;
+
+	color-scheme: light;
 
 	--radius: 0.25rem;
 	--radius-lg: 0.5rem;
@@ -51,6 +55,49 @@
 	--fast: 160ms;
 	--base: 260ms;
 	--slow: 520ms;
+}
+
+/*
+ * Dark theme — the same Japandi palette after dusk: warm charcoal ground,
+ * bone-white ink, and the pine and clay lifted so they still carry against
+ * the dark. Follows the OS unless the reader has picked a side with the
+ * topbar toggle for this visit (`data-theme` on <html>, see useTheme.ts). Screen-only, so
+ * print always comes out on the light palette.
+ */
+@media screen {
+	:root[data-theme="dark"] {
+		--paper: #22201d;
+		--surface: #292724;
+		--surface-sunken: #1c1a18;
+		--text: #d6d1c6;
+		--muted: #9c9486;
+		--faint: #918a7c;
+		--line: #36332e;
+		--line-strong: #48433b;
+		--accent: #82a69b;
+		--accent-hover: #a6c6bc;
+		--clay: #b98059;
+		--shadow-rgb: 0 0 0;
+		color-scheme: dark;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--paper: #22201d;
+		--surface: #292724;
+		--surface-sunken: #1c1a18;
+		--text: #d6d1c6;
+		--muted: #9c9486;
+		--faint: #918a7c;
+		--line: #36332e;
+		--line-strong: #48433b;
+		--accent: #82a69b;
+		--accent-hover: #a6c6bc;
+		--clay: #b98059;
+		--shadow-rgb: 0 0 0;
+		color-scheme: dark;
+	}
 }
 
 *,
@@ -193,6 +240,19 @@ ol {
 	outline: 2px solid var(--accent);
 	outline-offset: 3px;
 	border-radius: 2px;
+}
+
+/* ── Theme switch ──────────────────────────────────────────────── */
+
+/*
+ * The theme toggle reveals the new theme as a circle grown from the
+ * button (see useTheme.ts), so the browser's default cross-fade between
+ * the two snapshots is switched off: the old page holds still underneath.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
 }
 
 /* ── Motion preferences ────────────────────────────────────────── */

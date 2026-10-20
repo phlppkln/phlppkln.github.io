@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from "vue";
 import { profile } from "./data/profile";
 import { timeline } from "./data/timeline";
 import { useActiveSection } from "./composables/useActiveSection";
+import { useTheme } from "./composables/useTheme";
 import HeroMark from "./components/HeroMark.vue";
 import IntroSection from "./components/IntroSection.vue";
 import AboutSection from "./components/AboutSection.vue";
@@ -12,6 +13,7 @@ import ProjectsSection from "./components/ProjectsSection.vue";
 import ContactLinks from "./components/ContactLinks.vue";
 
 const { active } = useActiveSection(["intro", "about", "skills", "timeline", "projects"]);
+const { theme, toggle: toggleTheme } = useTheme();
 
 /**
  * The section nav lives in the topbar, and once the hero ridge has pinned
@@ -93,6 +95,45 @@ const year = new Date().getFullYear();
 					>{{ section.label }}</a
 				>
 			</nav>
+			<button
+				type="button"
+				class="theme-toggle"
+				:aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+				:title="theme === 'dark' ? 'Light theme' : 'Dark theme'"
+				@click="toggleTheme"
+			>
+				<!--
+					Shows the theme you would switch to. One drawing morphs between
+					the two: the rays spin away as the disc swells, and a shadow disc
+					slides in from the corner to carve the crescent.
+				-->
+				<svg
+					class="theme-icon"
+					:class="{ 'is-moon': theme === 'light' }"
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+				>
+					<mask
+						id="theme-icon-shadow"
+						maskUnits="userSpaceOnUse"
+						x="-4"
+						y="-4"
+						width="32"
+						height="32"
+					>
+						<rect x="-4" y="-4" width="32" height="32" fill="white" />
+						<circle class="theme-icon-shadow" cx="17" cy="7" r="6.5" fill="black" />
+					</mask>
+					<!-- Masked on the group so scaling the disc leaves the shadow be -->
+					<g mask="url(#theme-icon-shadow)">
+						<circle class="theme-icon-disc" cx="12" cy="12" r="5" />
+					</g>
+					<path
+						class="theme-icon-rays"
+						d="M12 1.5v2M12 20.5v2M1.5 12h2M20.5 12h2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M4.6 19.4l1.4-1.4M18 6l1.4-1.4"
+					/>
+				</svg>
+			</button>
 		</div>
 	</header>
 
@@ -178,6 +219,7 @@ const year = new Date().getFullYear();
 }
 
 .brand {
+	margin-right: auto;
 	font-family: var(--font-heading);
 	font-size: 0.9rem;
 	font-weight: 500;
@@ -253,6 +295,87 @@ nav a.is-active {
 	color: var(--accent);
 }
 
+/* ── Theme toggle ──────────────────────────────────────────────── */
+
+/*
+ * Stays in the topbar's first row at every width and keeps working once
+ * the nav has handed off to the ridge, so it is never inert.
+ */
+.theme-toggle {
+	display: grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	margin: -0.25rem -0.4rem -0.25rem 0;
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: var(--radius);
+	color: var(--muted);
+	cursor: pointer;
+	transition: color var(--fast) var(--ease);
+}
+
+.theme-toggle:hover {
+	color: var(--text);
+}
+
+.theme-icon {
+	width: 1.15rem;
+	height: 1.15rem;
+	overflow: visible;
+	transition: transform var(--slow) var(--ease);
+}
+
+.theme-icon-disc {
+	fill: currentColor;
+	transform-box: fill-box;
+	transform-origin: center;
+	transition: transform var(--slow) var(--ease);
+}
+
+/* Parked off the top-right corner while it is the sun */
+.theme-icon-shadow {
+	transform: translate(8px, -8px);
+	transition: transform var(--slow) var(--ease);
+}
+
+.theme-icon-rays {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.6;
+	stroke-linecap: round;
+	transform-origin: 12px 12px;
+	transition:
+		transform var(--slow) var(--ease),
+		opacity var(--base) var(--ease);
+}
+
+/*
+ * Moon. The whole drawing turns a little as it goes so the change reads as
+ * one motion; on the way back to sun the rays wait for the disc to shrink.
+ */
+.theme-icon.is-moon {
+	transform: rotate(-40deg);
+}
+
+.theme-icon.is-moon .theme-icon-disc {
+	transform: scale(1.7);
+}
+
+.theme-icon.is-moon .theme-icon-shadow {
+	transform: none;
+}
+
+.theme-icon.is-moon .theme-icon-rays {
+	opacity: 0;
+	transform: rotate(-90deg) scale(0.4);
+}
+
+.theme-icon:not(.is-moon) .theme-icon-rays {
+	transition-delay: 120ms;
+}
+
 /* ── Main + footer ─────────────────────────────────────────────── */
 
 main {
@@ -302,6 +425,7 @@ footer {
 	}
 
 	nav {
+		order: 1;
 		width: 100%;
 		gap: 1.05rem;
 		font-size: 0.8rem;
@@ -319,7 +443,8 @@ footer {
 
 @media print {
 	.topbar,
-	.skip-link {
+	.skip-link,
+	.theme-toggle {
 		display: none;
 	}
 }

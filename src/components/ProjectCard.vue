@@ -156,7 +156,7 @@ function imagesAfter(section?: ProjectImage["after"]) {
 
 .card:hover {
 	border-color: var(--line-strong);
-	box-shadow: 0 1px 2px rgba(34, 32, 28, 0.04), 0 6px 18px rgba(34, 32, 28, 0.045);
+	box-shadow: 0 1px 2px rgb(var(--shadow-rgb) / 0.04), 0 6px 18px rgb(var(--shadow-rgb) / 0.045);
 	transform: translateY(-1px);
 }
 
