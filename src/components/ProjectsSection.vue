@@ -3,6 +3,7 @@ import SectionMark from "./SectionMark.vue";
 import { ref } from "vue";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard.vue";
+import PlaygroundCard from "./PlaygroundCard.vue";
 
 const openIds = ref<string[]>([]);
 
@@ -26,6 +27,7 @@ function toggle(id: string) {
 				@toggle="toggle(project.id)"
 			/>
 		</div>
+		<PlaygroundCard v-reveal="projects.length * 70" />
 	</section>
 </template>
 

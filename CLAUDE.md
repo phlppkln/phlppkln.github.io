@@ -25,6 +25,7 @@ Minimal one-page portfolio: vanilla Vue 3 + TypeScript on Vite, no UI/CSS framew
 | `src/data/profile.ts` | name, role, pitch, about paragraphs, skills, contact links |
 | `src/data/timeline.ts` | timeline entries (one line each) |
 | `src/data/projects.ts` | project cards: collapsed summary + expanded details |
+| `src/data/playground.ts` | unfinished pet projects, listed in the collapsible "Playground" card under the project cards |
 
 The Timeline section auto-hides (including its nav link) while `timeline` in `src/data/timeline.ts` is empty — this is intentional so the page stays shareable before entries are filled in. That file has the entry shape and commented-out examples ready to uncomment.
 
