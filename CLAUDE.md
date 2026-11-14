@@ -1,18 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Commands
 
-```bash
-pnpm install
-pnpm dev        # dev server
-pnpm build      # type-check (vue-tsc --noEmit) + production build to dist/
-pnpm preview    # serve the production build
-pnpm typecheck  # vue-tsc --noEmit only
-```
-
-No test suite or lint script exists. `dist/` is a plain static folder deployable anywhere; this repo specifically deploys to GitHub Pages via `.github/workflows/deploy.yml` (build → `actions/upload-pages-artifact` → `actions/deploy-pages`), as a user site at the root (https://phlppkln.github.io/), so `vite.config.ts` sets `base: "/"`.
+Standard pnpm scripts (see `package.json`). No test suite or lint script exists. `dist/` is a plain static folder deployable anywhere; this repo specifically deploys to GitHub Pages via `.github/workflows/deploy.yml` (build → `actions/upload-pages-artifact` → `actions/deploy-pages`), as a user site at the root (https://phlppkln.github.io/), so `vite.config.ts` sets `base: "/"`.
 
 ## Architecture
 
