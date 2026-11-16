@@ -28,6 +28,7 @@ export const skills: SkillGroup[] = [
 			"UI/UX design",
 			"Wireframing",
 			"Low- and high-fidelity prototyping",
+			"Figma",
 		],
 	},
 	{

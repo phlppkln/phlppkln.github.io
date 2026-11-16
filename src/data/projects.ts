@@ -153,7 +153,7 @@ export const projects: Project[] = [
 		org: "TU Wien — Master's thesis",
 		period: "2021 – 2023",
 		summary:
-			"A Miro application and user study exploring how the infinite canvas can host collaborative, data-driven interactive articles resulting in a protoype that uses GloVe word embeddings to cluster participants' contributions by semantic similarity. This project was my Master's thesis and was awarded the Different Brilliant award at the IConCMT 2023 conference.",
+			"A Miro application and user study exploring how the infinite canvas can host collaborative, data-driven interactive articles resulting in a prototype that uses GloVe word embeddings to cluster participants' contributions by semantic similarity. This project was my Master's thesis and was awarded the Different Brilliant award at the IConCMT 2023 conference.",
 		tags: [
 			"HCI research",
 			"Information visualization",
